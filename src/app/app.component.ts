@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'tic-tak-toe';
+  title = 'tic-tac-toe';
+
   winMessage: string = '';
   isCross = false;
   itemArray: string[] = new Array(9).fill('empty');
@@ -20,10 +22,12 @@ export class AppComponent {
 
     if (this.itemArray[itemNumber] === 'empty') {
       this.itemArray[itemNumber] = this.isCross ? 'cross' : 'circle';
+
       this.isCross = !this.isCross;
     } else {
-      return this.toastr.info('already filled !');
+      return this.toastr.info('Already filled');
     }
+
     this.checkIsWinner();
   }
 
